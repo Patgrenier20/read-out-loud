@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Read Out Loud</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body inert>
+  <header class="app-header">
+    <a class="brand" href="#" aria-label="Read Out Loud home"><span class="brand-icon" aria-hidden="true">ııı</span><span>read out loud<span class="brand-dot">.</span></span></a>
+    <button id="theme" class="icon-button" title="Switch color theme" aria-label="Switch color theme">◐</button>
+  </header>
+  <main>
+    <div class="intro"><span class="eyebrow">A LITTLE LESS SCROLLING</span><h1>Your web.<br><em>In your voice.</em></h1><p>Make room to listen.</p></div>
+    <nav class="tabs" aria-label="Main navigation">
+      <button class="tab active" data-view="reader" aria-current="page">Reader</button>
+      <button class="tab" data-view="library">Your shelf <span id="shelf-count">0</span></button>
+      <button class="tab" data-view="connections">Connections</button>
+    </nav>
+    <div id="notice" role="status" aria-live="polite" hidden></div>
+    <section id="reader-view" class="view">
+      <div class="source-actions"><button id="read-page" class="button primary">↗ Read this page</button><button id="open-file" class="button secondary">＋ Open a file</button><input id="file-input" type="file" accept=".pdf,.epub,.docx,.txt,.md,.html,.htm,.csv" hidden></div>
+      <button id="paste-toggle" class="text-button">Or paste your own text <span>↗</span></button>
+      <form id="paste-form" class="paste-form" hidden><label for="paste-text">What would you like to listen to?</label><textarea id="paste-text" rows="6" placeholder="An idea, an article, a chapter…" maxlength="600000" required></textarea><button class="button primary" type="submit">Add to reader</button></form>
+      <div class="voice-card">
+        <div class="section-heading"><h2>THE VOICE</h2><span id="provider-badge" class="badge">FREE</span></div>
+        <label for="provider">Voice provider</label><select id="provider"></select>
+        <div class="voice-search"><label for="voice-search">Find a voice</label><input id="voice-search" type="search" placeholder="Search name, language, accent…"></div>
+        <label for="voice">Voice <span id="voice-count" class="muted"></span></label><select id="voice"></select>
+        <div class="voice-footer"><span id="voice-detail" class="muted">Your device, your voices.</span><button id="preview" class="text-button">▷ Preview</button></div>
+        <p id="provider-note" class="fine-print"></p>
+      </div>
+      <div id="document-card" class="document-card">
+        <div class="section-heading"><h2>UP NEXT</h2><button id="bookmark" class="text-button" disabled>＋ Bookmark</button></div>
+        <h3 id="document-title">A good read starts here.</h3><p id="document-meta" class="muted">Open a page, bring a book, or paste a little something.</p>
+        <div id="reader-text" class="reader-text" tabindex="0" aria-label="Reading text"><div class="empty-illustration" aria-hidden="true"><span>“</span><div class="lines"><i></i><i></i><i></i></div></div><p class="empty-copy">Turn the words in front of you<br>into a moment for yourself.</p></div>
+        <div id="bookmarks" class="bookmarks"></div>
+      </div>
+      <div class="reading-options"><label><input type="checkbox" id="auto-scroll" checked> Follow along</label><span>Saved on this device</span></div>
+    </section>
+    <section id="library-view" class="view" hidden><div class="page-heading"><h2>A place for your reads.</h2><p>Your last eight reads, with your place kept for you.</p></div><div id="library-list"></div></section>
+    <section id="connections-view" class="view" hidden>
+      <div class="page-heading"><h2>A voice for every mood.</h2><p>Start with your device. Bring your own key when you want something more.</p></div>
+      <div class="privacy-note"><span aria-hidden="true">⌘</span><p>Keys stay in this Chrome profile. Connecting a service sends your reading text directly to that provider when you press play. Provider charges may apply.</p></div>
+      <div id="connection-cards"></div>
+      <button id="clear-keys" class="text-button danger">Remove all saved API keys</button>
+    </section>
+  </main>
+  <footer class="player">
+    <div class="playback-heading"><span id="playback-state" role="status">READY WHEN YOU ARE</span><span id="progress-label">0 / 0</span></div>
+    <input type="range" id="progress" min="0" max="0" value="0" aria-label="Reading position" disabled>
+    <div class="transport"><button id="previous" class="icon-button" aria-label="Previous sentence" disabled>Ⅰ◀</button><button id="play" class="play-button" aria-label="Play" disabled>▶</button><button id="next" class="icon-button" aria-label="Next sentence" disabled>▶Ⅰ</button><button id="stop" class="icon-button stop-button" aria-label="Stop playback">■</button></div>
+    <div class="player-settings"><label for="rate">Speed <output id="rate-label">1×</output></label><input id="rate" type="range" min="0.5" max="3" step="0.1" value="1"><label for="volume" class="volume-label">Volume</label><input id="volume" type="range" min="0" max="1" step="0.05" value="1"></div>
+  </footer>
+  <script src="sidepanel.js" type="module"></script>
+</body>
+</html>

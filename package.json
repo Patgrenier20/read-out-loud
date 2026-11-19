@@ -1,0 +1,20 @@
+{
+  "name": "read-out-loud",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.js",
+    "check": "npm run test && npm run build"
+  },
+  "dependencies": {
+    "@mozilla/readability": "^0.6.0",
+    "fflate": "^0.8.2",
+    "mammoth": "^1.11.0",
+    "pdfjs-dist": "^6.5.438"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  }
+}
